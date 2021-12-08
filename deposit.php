@@ -8,21 +8,21 @@ if(!array_key_exists('deposited', $_SESSION)){
     $_SESSION['deposited'] = False;
 }
 
-//print_r($_SESSION);
+print_r($_SESSION);
 $err = "";
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $pwd = trim($_POST['pwd']);
     $amount = trim($_POST['amt']);
-    $description = trim($_POST['des']);
-    $refc = trim($_POST['refc']);
+    $description = mysqli_real_escape_string($conn, trim($_POST['des']));
+    $refc = mysqli_real_escape_string($conn, trim($_POST['refc']));
 
     if(empty($pwd) || empty($amount) || empty($description)){
         $err = "Fill All the Required Details !!";
     }
     
     if(strlen($refc) > 8){
-        $err .= "Referal Code can be atmost 8 Characters !!";
+        $err .= "Referral Code can be atmost 8 Characters !!";
     }
 
     if(empty($err) && !$_SESSION['deposited']){
@@ -45,9 +45,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             $refc = "REF./CHEQUE No. ".$refc;
 
             $sql = "INSERT INTO accstatements (accnum, amount, type, des, ref, date, datetime, isapproved) VALUES('$accnum','$amount','D','$description','$refc','$today','$now', 0)";
-            mysqli_query($conn, $sql);
+            
 
-            $_SESSION['deposited'] = true;
+            if(!mysqli_query($conn, $sql)){
+                $err =  mysqli_error($conn);
+            }
+            else{
+                $_SESSION['deposited'] = true;
+            }
         }
         else{
             $err = "Invalid Password !";

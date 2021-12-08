@@ -37,7 +37,7 @@ if(array_key_exists('approvals',$_SESSION)){
 //     unset($_SESSION['verified']);
 // }
 
-print_r($_SESSION);
+//print_r($_SESSION);
 ?>
 
 <!doctype html>
@@ -244,6 +244,21 @@ print_r($_SESSION);
             </a></li>
             <li class="list-group-item"><a href="approvals.php">
                 View and Approve Requests
+                <?php
+                    $sql = "SELECT id FROM accstatements WHERE (type = 'D') AND (isapproved = 0)";
+                    $res1 = mysqli_query($conn, $sql); //Pending Money Deposits
+
+                    $sql = "SELECT id FROM nrracc_primary WHERE isapproved = 0";
+                    $res2 = mysqli_query($conn, $sql);
+                    
+                    $sql = "SELECT id FROM loans WHERE stage = 0";
+                    $res3 = mysqli_query($conn, $sql);
+
+                    $n = mysqli_num_rows($res1) + mysqli_num_rows($res2) + mysqli_num_rows($res3);
+                    if($n > 0){
+                        echo '<span class="badge badge-danger">'.$n.' new</span>';
+                    }
+                ?>
             </a></li>
             <li class="list-group-item"><a href="notifications.php">
                 Notifications at Manager's Desk

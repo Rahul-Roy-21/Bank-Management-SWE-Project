@@ -2,8 +2,8 @@
 include '../connectonly.php';
 
 session_start();
-print_r($_SESSION);
-print_r($_POST);
+//print_r($_SESSION);
+//print_r($_POST);
 
 if(!array_key_exists('approvals', $_SESSION)){
     $_SESSION['approvals'] = array('a'=>False,'ca'=>False,'la'=>False);
