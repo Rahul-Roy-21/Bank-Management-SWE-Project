@@ -32,9 +32,9 @@
                 $_SESSION['name'] = $rowfetched['name'];
                 $_SESSION['email'] = $rowfetched['email'];
                 $_SESSION['accnum'] = $accnum;
-                $_SESSION['otp'] = bin2hex(random_bytes(5));
+                $_SESSION['otp'] = bin2hex(random_bytes(4));
                 
-                $mail = sendMail($_SESSION['name'], $_SESSION['email'], $_SESSION['otp'],'FORGETUSERID');
+                $mail = sendMail($_SESSION['name'], $_SESSION['email'], $_SESSION['otp'],'FORGETUSERID','','');
 
                 if($mail){
                     $_SESSION['forgotuid'] = 2;
@@ -47,7 +47,6 @@
         }
 
     }
-
     //print_r($_SESSION);
 
 ?>

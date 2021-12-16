@@ -223,16 +223,17 @@ if(array_key_exists('verified',$_SESSION)){
                 ?>
             </div>
         </div>
-        <?php
-            if(array_key_exists('forgotuid', $_SESSION)){
-                echo '<div class="alert alert-info text-center">You can Reset Your User ID and Password, please do check Out those Facilities given below </div>';
-                unset($_SESSION['forgotuid']);
-            }
-        ?>
+        
 
     </div>
     
     <div class="container main my-2">
+        <?php
+            if(array_key_exists('forgotuid', $_SESSION)){
+                echo '<div class="alert alert-warning font-weight-bold text-uppercase text-center">You can Reset Your User ID and Password, please do check Out those Facilities given below <i class="fas fa-exclamation-triangle"></i></div>';
+                unset($_SESSION['forgotuid']);
+            }
+        ?>
         <div class="alert alert-info" role="alert">
             <b>Welcome to NRR Bank <i class="fas fa-university"></i></b><br>
             This Website was built as a Software Engineering Project Based on a Bank Management System.<br> 
