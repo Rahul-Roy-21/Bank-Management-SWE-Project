@@ -1,4 +1,4 @@
-***<h1 align="center">BANK MANAGEMENT SYSTEM Using PHP-MySQLi</h1>***
+<h1 align="center">BANK MANAGEMENT SYSTEM Using PHP-MySQLi</h1>
 <h3 align="center">Worked as a Full-Stack Coder in a Software Engineering Project</h3>
 <p align="center"><a href="https://drive.google.com/file/d/171hlYd3hkHbNtdiiiniErE1w7DgPf8vh/view?usp=sharing" target="_blank">See Real Working Site</a></p>
 <hr>  
