@@ -263,9 +263,6 @@ if(array_key_exists('approvals',$_SESSION)){
             <li class="list-group-item"><a href="notifications.php">
                 Notifications at Manager's Desk
             </a></li>
-            <li class="list-group-item"><a href="withdraw.php">
-                Bank's Policies and FAQs
-            </a></li>
         </ul>
     </div>
 
